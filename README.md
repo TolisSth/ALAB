@@ -31,6 +31,9 @@ A good starting configuration to play with the parallel kernel is:
 
 `./alab --size 100000 --threads 8 --parallel`. 
 
+## Measurements 
+Right now we are measuring MFLOPS GFLOPS and time in seconds.
+
 ## Roadmap 
 The aforementioned roadmap is finally here! The whole roadmap is splitted in two categories, the infrastructure part and the kernels part namely: 
 
