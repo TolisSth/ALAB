@@ -3,9 +3,13 @@ Another Linnear Algebra Benchmark is a benchmark closely inspired by the [HPCCG]
 
 ## Installation 
 To install this program you need to make sure your compiler supports OpenMP. If it does support it proceed with the following commands: 
+
 `git clone git@github.com:TolisSth/ALAB.git`
+
 `cd ALAB`
+
 `make clean`
+
 `make -j`
 
 ## Usage 
@@ -23,7 +27,8 @@ Options:
 ```
 This is the `--help` message and as it is evident you don't need to do much to run the program because it will handle the configuration by itself running the equal: `./alab --size 1000 --threads 2 --serial --seed 42`, which is a bit misleading since `--threads` are only used when the kernel is running at parallel but oh well, more thing to add to the roadmap. 
 
-A good starting configuration to play with the parallel kernel is: `./alab --size 100000 --threads 8 --parallel`. 
+A good starting configuration to play with the parallel kernel is: 
+`./alab --size 100000 --threads 8 --parallel`. 
 
 ## Roadmap 
 The aforementioned roadmap is finally here! The whole roadmap is splitted in two categories, the infrastructure part and the kernels part namely: 
