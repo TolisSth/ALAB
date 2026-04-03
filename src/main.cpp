@@ -8,37 +8,48 @@
 
 int main(int argc, char* argv[]) {
 	Args args = arg_parser(argc, argv);	
-	/*
-	 * DEBUG CODE TODO: Move this code in a debug mode thingy
-	std::cout << args.size << " " << args.num_threads << " " << args.seed << " " << std::endl; 
+	std::cout << "ALAB | Another Linear Algebra Benchmark\nApostolos Chalis 2026 <achalis@csd.auth.gr>" << std::endl;
 
-	std::vector<double> x = generate_vector(args.size, args.seed); 
+	if (args.serial) {	
+		// DDOT kernel (serial)
+		std::cout << "Generating vectors..." << std::endl; 
+		std::vector<double> vector1 = generate_vector(args.size, args.seed);
+		std::vector<double> vector2 = generate_vector(args.size, args.seed + args.size);
 
-	for (double element : x) {
-        	std::cout << element << " ";
-    	}
-	*/	
+		std::cout << "Calculating DDOT (serial)..." << std::endl; 
+		auto start_of_DDOT = std::chrono::high_resolution_clock::now();
+		double DDOT_calc = ddot_serial(vector1.data(), vector2.data(), args.size);
+		auto end_of_DDOT = std::chrono::high_resolution_clock::now();
+		
+		// Time calculation and output
+		std::chrono::duration<double> dur_of_DDOT = end_of_DDOT - start_of_DDOT;
+		std::cout << "Finished DDOT (serial) calculation at: (" << std::fixed << std::setprecision(6) << dur_of_DDOT.count() << "s)" << std::endl;
 
-    	std::cout << "ALAB | Another Linear Algebra Benchmark\nApostolos Chalis 2026 <achalis@csd.auth.gr>" << std::endl;
-	
-	// DDOT kernel 
-	std::cout << "Generating vectors..." << std::endl; 
-	std::vector<double> vector1 = generate_vector(args.size, args.seed);
-	std::vector<double> vector2 = generate_vector(args.size, args.seed + args.size);
+		// MFLOPS & GFLOPS calculation and output
+		double mflops = (2.0 * args.size) / (dur_of_DDOT.count() * 1e6);
+		double gflops = mflops / 1e3;
+		std::cout << "DDOT Performance (serial): " << std::fixed << std::setprecision(2) << mflops << " MFLOPS (" << std::fixed << std::setprecision(2) << gflops << " GFLOPS)" << std::endl;
+	}
+	else if (args.parallel) {
+		// DDOT kernel (parallel)
+		std::cout << "Generating vectors..." << std::endl; 
+		std::vector<double> vector1 = generate_vector(args.size, args.seed);
+		std::vector<double> vector2 = generate_vector(args.size, args.seed + args.size);
 
-	std::cout << "Calculating DDOT..." << std::endl; 
-	auto start_of_DDOT = std::chrono::high_resolution_clock::now();
-	double DDOT_calc = ddot_serial(vector1.data(), vector2.data(), args.size);
-	auto end_of_DDOT = std::chrono::high_resolution_clock::now();
-	
-	// Time calculation and output
-	std::chrono::duration<double> dur_of_DDOT = end_of_DDOT - start_of_DDOT;
-	std::cout << "Finished DDOT calculation at: (" << std::fixed << std::setprecision(6) << dur_of_DDOT.count() << "s)" << std::endl;
+		std::cout << "Calculating DDOT (parallel)..." << std::endl; 
+		auto start_of_DDOT = std::chrono::high_resolution_clock::now();
+		double DDOT_calc = ddot_parallel(vector1.data(), vector2.data(), args.size);
+		auto end_of_DDOT = std::chrono::high_resolution_clock::now();
+		
+		// Time calculation and output
+		std::chrono::duration<double> dur_of_DDOT = end_of_DDOT - start_of_DDOT;
+		std::cout << "Finished DDOT (parallel) calculation at: (" << std::fixed << std::setprecision(6) << dur_of_DDOT.count() << "s)" << std::endl;
 
-	// MFLOPS & GFLOPS calculation and output
-	double mflops = (2.0 * args.size) / (dur_of_DDOT.count() * 1e6);
-	double gflops = mflops / 1e3;
-	std::cout << "DDOT Performance: " << std::fixed << std::setprecision(2) << mflops << " MFLOPS (" << std::fixed << std::setprecision(2) << gflops << " GFLOPS)" << std::endl;
+		// MFLOPS & GFLOPS calculation and output
+		double mflops = (2.0 * args.size) / (dur_of_DDOT.count() * 1e6);
+		double gflops = mflops / 1e3;
+		std::cout << "DDOT Performance (parallel): " << std::fixed << std::setprecision(2) << mflops << " MFLOPS (" << std::fixed << std::setprecision(2) << gflops << " GFLOPS)" << std::endl;
+	}
 
     return EXIT_SUCCESS;
 }

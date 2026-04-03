@@ -9,6 +9,9 @@ struct Args {
 	int num_threads = 1;
 	int seed = 42; 
 	size_t size = 1000; 
+	bool serial = true; 
+	bool parallel = false; 
+
 };
 
 Args arg_parser(int argc, char* argv[]);

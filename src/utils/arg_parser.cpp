@@ -21,6 +21,14 @@ Args arg_parser(int argc, char* argv[]) {
 		else if (arg == "--seed" || arg == "-sd"){
 			args.seed = std::stoi(argv[i+1]);
 		}
+		else if(arg == "--serial"){
+			args.serial = true; 
+			args.parallel = false; 
+		}
+		else if (arg == "--parallel"){
+			args.parallel = true; 
+			args.serial = false; 
+		}
 		else if (arg == "--help" || arg == "-h"){
 			std::cout << "Usage: alab [options]\n";
 			std::cout << "Options:\n";
