@@ -8,7 +8,7 @@
 Args arg_parser(int argc, char* argv[]) {
 	Args args;
 
-	for(int i = 0; i < argc; i++){
+	for(int i = 1; i < argc; i++){
 		// changing to string to actually compare 
 		std::string arg = argv[i]; 
 

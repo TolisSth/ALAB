@@ -14,7 +14,7 @@ struct Args {
 Args arg_parser(int argc, char* argv[]);
 
 // Generators code
-std::vector<double> generate_vector(size_t size_of_vector);
+std::vector<double> generate_vector(size_t size_of_vector, unsigned int seed);
 
 // TODO: Add generate_matrix()
 
