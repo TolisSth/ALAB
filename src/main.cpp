@@ -3,6 +3,7 @@
 #include <chrono> 
 #include <iomanip>
 
+#include "omp.h"
 #include "utils.hpp"
 #include "kernel_interface.hpp"
 
@@ -32,6 +33,8 @@ int main(int argc, char* argv[]) {
 	}
 	else if (args.parallel) {
 		// DDOT kernel (parallel)
+		omp_set_num_threads(args.num_threads); 
+
 		std::cout << "Generating vectors..." << std::endl; 
 		std::vector<double> vector1 = generate_vector(args.size, args.seed);
 		std::vector<double> vector2 = generate_vector(args.size, args.seed + args.size);

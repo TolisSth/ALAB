@@ -16,7 +16,7 @@ Args arg_parser(int argc, char* argv[]) {
 			args.size = std::stoi(argv[i+1]);
 		}
 		else if (arg == "--threads" || arg == "-t"){
-			args.num_threads = std::stoi(argv[i+1]);
+			args.num_threads = std::stoull(argv[i+1]);
 		}
 		else if (arg == "--seed" || arg == "-sd"){
 			args.seed = std::stoi(argv[i+1]);
@@ -33,9 +33,11 @@ Args arg_parser(int argc, char* argv[]) {
 			std::cout << "Usage: alab [options]\n";
 			std::cout << "Options:\n";
 			std::cout << "  --size, -s <size>        Set the size (default: 1000)\n";
-			std::cout << "  --threads, -t <num>      Set the number of threads (default: 1)\n";
+			std::cout << "  --threads, -t <num>      Set the number of threads (default: 2)\n";
 			std::cout << "  --seed, -sd <seed>         Set the random seed (default: 42)\n";
 			std::cout << "  --help, -h               Display this help message\n";
+			std::cout << "  --serial                 Run the serial version of the benchmark (default)\n";
+			std::cout << "  --parallel               Run the parallel version of the benchmark (please specify number of thread or else it will run in two threads)\n";
 			exit(0);
 		}
 	}

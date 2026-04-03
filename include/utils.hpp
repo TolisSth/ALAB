@@ -6,7 +6,7 @@
 
 // Argument parser code
 struct Args {
-	int num_threads = 1;
+	int num_threads = 2;
 	int seed = 42; 
 	size_t size = 1000; 
 	bool serial = true; 
