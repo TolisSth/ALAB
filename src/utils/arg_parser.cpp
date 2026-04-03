@@ -18,11 +18,15 @@ Args arg_parser(int argc, char* argv[]) {
 		else if (arg == "--threads" || arg == "-t"){
 			args.num_threads = std::stoi(argv[i+1]);
 		}
+		else if (arg == "--seed" || arg == "-sd"){
+			args.seed = std::stoi(argv[i+1]);
+		}
 		else if (arg == "--help" || arg == "-h"){
 			std::cout << "Usage: alab [options]\n";
 			std::cout << "Options:\n";
 			std::cout << "  --size, -s <size>        Set the size (default: 1000)\n";
 			std::cout << "  --threads, -t <num>      Set the number of threads (default: 1)\n";
+			std::cout << "  --seed, -sd <seed>         Set the random seed (default: 42)\n";
 			std::cout << "  --help, -h               Display this help message\n";
 			exit(0);
 		}
