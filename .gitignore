@@ -1,6 +1,10 @@
 # binary
 alab
 
+#results
+results/
+*.csv
+
 # Prerequisites
 *.d
 

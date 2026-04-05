@@ -30,6 +30,14 @@ int main(int argc, char* argv[]) {
 		double mflops = (2.0 * args.size) / (dur_of_DDOT.count() * 1e6);
 		double gflops = mflops / 1e3;
 		std::cout << "DDOT Performance (serial): " << std::fixed << std::setprecision(2) << mflops << " MFLOPS (" << std::fixed << std::setprecision(2) << gflops << " GFLOPS)" << std::endl;
+		
+		// Result logging
+		if (args.save_to_file) {
+			result_logger("DDOT", "serial", dur_of_DDOT.count(), mflops, gflops, false); 
+		}
+		if (args.save_to_new_file){
+			result_logger("DDOT", "serial", dur_of_DDOT.count(), mflops, gflops, true); 
+		}
 	}
 	else if (args.parallel) {
 		// DDOT kernel (parallel)
@@ -52,6 +60,14 @@ int main(int argc, char* argv[]) {
 		double mflops = (2.0 * args.size) / (dur_of_DDOT.count() * 1e6);
 		double gflops = mflops / 1e3;
 		std::cout << "DDOT Performance (parallel): " << std::fixed << std::setprecision(2) << mflops << " MFLOPS (" << std::fixed << std::setprecision(2) << gflops << " GFLOPS)" << std::endl;
+
+		// Result logging
+		if (args.save_to_file) {
+			result_logger("DDOT", "parallel", dur_of_DDOT.count(), mflops, gflops, false); 
+		}
+		if (args.save_to_new_file){
+			result_logger("DDOT", "parallel", dur_of_DDOT.count(), mflops, gflops, true); 
+		}
 	}
 
     return EXIT_SUCCESS;
