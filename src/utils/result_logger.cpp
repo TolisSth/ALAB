@@ -8,8 +8,7 @@
 
 #include "utils.hpp"
 
-void result_logger(const std::string& kernel_name, const std::string& execution_type, 
-                   double duration, double mflops, double gflops, bool new_file) {
+void result_logger(const std::string& kernel_name, const std::string& execution_type, size_t size, double duration, double mflops, double gflops, bool new_file) {
     
     	std::filesystem::create_directories("results/");
 
@@ -41,6 +40,7 @@ void result_logger(const std::string& kernel_name, const std::string& execution_
 		std::cout << "Writing results to: " << complete_filename << std::endl; 
 		outfile << kernel_name << ","
 			<< execution_type << ","
+			<< size << ","
 			<< std::fixed << duration << ","
 			<< std::fixed << mflops << ","
 			<< std::fixed << gflops << "\n"; 

@@ -33,10 +33,10 @@ int main(int argc, char* argv[]) {
 		
 		// Result logging
 		if (args.save_to_file) {
-			result_logger("DDOT", "serial", dur_of_DDOT.count(), mflops, gflops, false); 
+			result_logger("DDOT", "serial", args.size, dur_of_DDOT.count(), mflops, gflops, false); 
 		}
 		if (args.save_to_new_file){
-			result_logger("DDOT", "serial", dur_of_DDOT.count(), mflops, gflops, true); 
+			result_logger("DDOT", "serial", args.size,dur_of_DDOT.count(), mflops, gflops, true); 
 		}
 	}
 	else if (args.parallel) {
@@ -63,10 +63,10 @@ int main(int argc, char* argv[]) {
 
 		// Result logging
 		if (args.save_to_file) {
-			result_logger("DDOT", "parallel", dur_of_DDOT.count(), mflops, gflops, false); 
+			result_logger("DDOT", "parallel", args.size, dur_of_DDOT.count(), mflops, gflops, false); 
 		}
 		if (args.save_to_new_file){
-			result_logger("DDOT", "parallel", dur_of_DDOT.count(), mflops, gflops, true); 
+			result_logger("DDOT", "parallel", args.size, dur_of_DDOT.count(), mflops, gflops, true); 
 		}
 	}
 

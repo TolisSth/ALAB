@@ -18,7 +18,7 @@ struct Args {
 Args arg_parser(int argc, char* argv[]);
 
 // result logger code
-void result_logger(const std::string& kernel_name, const std::string& execution_type, double duration, double mflops, double gflops, bool new_file);
+void result_logger(const std::string& kernel_name, const std::string& execution_type, size_t size, double duration, double mflops, double gflops, bool new_file);
 
 // Generators code
 std::vector<double> generate_vector(size_t size_of_vector, unsigned int seed);
