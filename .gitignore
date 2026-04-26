@@ -46,3 +46,4 @@ results/
 
 # debug information files
 *.dwo
+bin/test_runner
