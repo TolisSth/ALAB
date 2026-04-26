@@ -10,7 +10,9 @@ To install this program you need to make sure your compiler supports OpenMP. If 
 
 `make clean`
 
-`make -j`
+`make -j4`
+
+> **_NOTE:_** ALAB employs the `Catch2` unit testing framework, please consider running `make test` to be sure that everything will run correctly.  
 
 ## Usage 
 In general the `--help` argument explains everything but because this is a `README.md` file let's plagiarize. 
