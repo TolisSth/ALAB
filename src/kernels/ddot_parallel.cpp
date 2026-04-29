@@ -1,5 +1,6 @@
 // Author: Apostolos Chalis 2026 <achalis@csd.auth.gr>
 #include "kernel_interface.hpp"
+
 #include <omp.h>
 #include <cstddef>
 
